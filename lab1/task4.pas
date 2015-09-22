@@ -30,7 +30,14 @@ begin
     str += ch;
     NextCh;
   end
-  else error;
+  else
+	begin
+		NextCh;
+		if (ch = '!') then
+			str += ch
+		else
+			error;
+	end;
   
   while char.IsDigit(ch) do
   begin
