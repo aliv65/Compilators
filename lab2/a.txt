@@ -1,0 +1,27 @@
+begin
+
+id := num;
+
+f3 : 3,43;
+
+4 *= not 5 / 3;
+
+3 += 3 + 2 and 5 - 4 or 2 * 4;
+
+4 /= 5 mod 3;
+
+a := 3 div 1;
+
+4 <> 2 or 4 = 4;
+
+3 < 5 and 3 >= 3;
+
+//a4 := 23;
+
+3 * 4 := 12 or 0;
+
+{ some comment text
+again
+and again }
+
+end
