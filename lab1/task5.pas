@@ -43,8 +43,10 @@ begin
       NextCh;
     end;
   
-  if ch <> #13 then
+  if (ch = #13) or (ch = #10) then
+	writeln('Распознана последовательность: ' + str)
+  else
     error;
   
-  writeln('Распознана последовательность: ' + str);
+  
 end.
