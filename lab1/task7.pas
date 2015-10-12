@@ -2,7 +2,6 @@ var
   ch: Char;
   pos: integer;
   str: string;
-  list: List<integer>;
 
 procedure error();
 begin
@@ -19,25 +18,38 @@ end;
 
 begin
   writeln('Введите строковое представление числа (оканчивающееся символом !):');
+  
+  var list:= new List<char>;
+  
   NextCh;
 
   if char.IsDigit(ch) then
   begin
-    str += ch;
+    list.add(ch);
     NextCh;
   end
   else error;
   
-  while (char.IsDigit(ch)) or (ch = ' ') do
+  while (true) do
   begin
-    str += ch;
-    NextCh;
+       
+	   while (ch = ' ') do
+             NextCh;
+       if (char.IsDigit(ch)) then
+			begin
+				list.add(ch);
+				NextCh;
+             end
+       else
+          error;
+       if (ch = ' ') then
+			NextCh
+	   else
+	       break;
   end;
+     
+  if (ch <> #13) or (ch <> #10) then
+	 error;
   
-  if ch <> '!' then
-    error;
-  
-  
-  
-  writeln('Распознан спсок чисел ', list.Println());
+  writeln('Распознан спсок чисел ', list.Print());
 end.
