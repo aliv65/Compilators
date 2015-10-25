@@ -83,6 +83,17 @@ begin
     NextCh;
 end;
 
+procedure PassLines;
+begin
+  while not f.Eof and (ch <> '}') do
+    NextCh;
+  if f.Eof then
+  begin
+    if ch <> '}' then
+      lexerror('ќжидалось }, но встречен конец файла!');
+  end;
+end;
+
 procedure NextLexem;
 begin
   PassSpaces;
@@ -156,12 +167,9 @@ begin
       end;
     '{':
       begin
+        PassLines;
         NextCh;
         LexKind := Tok.MULTI_COMMENT;
-        repeat
-          PassLine
-        until ch <> '}';
-        NextCh;
       end;
     '<':
       begin
